@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Magic Mirror</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="title"><span>◆</span>AI Magic Mirror<span>◆</span></h1>
+
+<div class="stage">
+  <div class="bulbs left" id="leftBulbs"></div>
+
+  <div class="mirror-frame" id="mirrorFrame">
+    <!-- Art deco corners -->
+    <div class="corner tl"><svg viewBox="0 0 44 44" fill="none"><path d="M0 0 L44 0 L44 2.5 L2.5 2.5 L2.5 44 L0 44 Z" fill="#C9A84C" opacity="0.7"/><path d="M7 7 L26 7 L26 9 L9 9 L9 26 L7 26 Z" fill="#C9A84C" opacity="0.25"/><rect x="16" y="0" width="0.8" height="7" fill="#C9A84C" opacity="0.45"/><rect x="0" y="16" width="7" height="0.8" fill="#C9A84C" opacity="0.45"/><polygon points="16,2.5 19.5,7 12.5,7" fill="#C9A84C" opacity="0.55"/><polygon points="2.5,16 7,19.5 7,12.5" fill="#C9A84C" opacity="0.55"/></svg></div>
+    <div class="corner tr"><svg viewBox="0 0 44 44" fill="none"><path d="M0 0 L44 0 L44 44 L41.5 44 L41.5 2.5 L0 2.5 Z" fill="#C9A84C" opacity="0.7"/><path d="M37 7 L18 7 L18 9 L35 9 L35 26 L37 26 Z" fill="#C9A84C" opacity="0.25"/><rect x="27.2" y="0" width="0.8" height="7" fill="#C9A84C" opacity="0.45"/><rect x="37" y="16" width="7" height="0.8" fill="#C9A84C" opacity="0.45"/><polygon points="28,2.5 31.5,7 24.5,7" fill="#C9A84C" opacity="0.55"/><polygon points="41.5,16 37,19.5 37,12.5" fill="#C9A84C" opacity="0.55"/></svg></div>
+    <div class="corner bl"><svg viewBox="0 0 44 44" fill="none"><path d="M0 44 L44 44 L44 41.5 L2.5 41.5 L2.5 0 L0 0 Z" fill="#C9A84C" opacity="0.7"/><path d="M7 37 L26 37 L26 35 L9 35 L9 18 L7 18 Z" fill="#C9A84C" opacity="0.25"/><rect x="16" y="37" width="0.8" height="7" fill="#C9A84C" opacity="0.45"/><rect x="0" y="27.2" width="7" height="0.8" fill="#C9A84C" opacity="0.45"/><polygon points="16,41.5 19.5,37 12.5,37" fill="#C9A84C" opacity="0.55"/><polygon points="2.5,28 7,24.5 7,31.5" fill="#C9A84C" opacity="0.55"/></svg></div>
+    <div class="corner br"><svg viewBox="0 0 44 44" fill="none"><path d="M44 44 L0 44 L0 41.5 L41.5 41.5 L41.5 0 L44 0 Z" fill="#C9A84C" opacity="0.7"/><path d="M37 37 L18 37 L18 35 L35 35 L35 18 L37 18 Z" fill="#C9A84C" opacity="0.25"/><rect x="27.2" y="37" width="0.8" height="7" fill="#C9A84C" opacity="0.45"/><rect x="37" y="27.2" width="7" height="0.8" fill="#C9A84C" opacity="0.45"/><polygon points="28,41.5 31.5,37 24.5,37" fill="#C9A84C" opacity="0.55"/><polygon points="41.5,28 37,24.5 37,31.5" fill="#C9A84C" opacity="0.55"/></svg></div>
+
+    <!-- Camera prompt -->
+    <div class="camera-prompt" id="cameraPrompt">
+      <div class="camera-icon">◎</div>
+      <p>Awaiting your reflection…<br><small>Allow camera access to begin</small></p>
+    </div>
+
+    <video id="video" autoplay playsinline muted></video>
+    <div class="mirror-glow"></div>
+    <div class="shimmer-overlay"></div>
+    <div class="idle-text" id="idleText">Look into the mirror…</div>
+
+    <!-- Loading -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-ring"></div>
+      <div class="loading-label" id="loadingLabel">The mirror sees you…</div>
+    </div>
+
+    <!-- Response -->
+    <div class="response-overlay" id="responseOverlay">
+      <div class="reset-hint" id="resetHint">TAP TO REFLECT AGAIN</div>
+      <div class="response-text" id="responseText"></div>
+    </div>
+  </div>
+
+  <div class="bulbs right" id="rightBulbs"></div>
+</div>
+
+<div class="controls">
+  <button class="capture-btn" id="captureBtn" disabled>Loading AI…</button>
+  <p class="hint">No API key needed — all analysis runs locally in your browser.</p>
+</div>
+
+<canvas id="canvas" style="display:none"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
